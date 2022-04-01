@@ -1,0 +1,797 @@
+//SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.6;
+
+//{event}
+// contract Mycontract{
+//     uint a;
+
+//     event NewTrade(
+//         uint indexed date,
+//         address indexed from,
+//         address indexed to,
+//         uint amount
+//     );
+//     function trade (address to, uint amount)external{
+//         emit NewTrade(now, msg.sender,to,amount);
+//     }
+// }
+
+
+// contract events{
+//     address public fromAccount;
+//     uint public toBalanceAccount;
+
+//     event transferred (address,address,uint);
+
+//     function transfer(address payable _toaccountId) public payable {
+//         fromAccount= msg.sender;
+//         _toaccountId.transfer(msg.value);
+//         toBalanceAccount=_toaccountId.balance;
+//         emit transferred(fromAccount,_toaccountId,msg.value);
+//     }
+// }
+
+
+
+//{emit events in solidity}
+// contract events{
+//     address public fromAccount;
+//     uint public toAccountBalance;
+
+//     event tranferred (address,address,uint);
+
+//     function transfer(address payable _toaccountId) public payable{
+//         fromAccount=msg.sender;
+//         _toaccountId.transfer(msg.value);
+//         toAccountBalance=_toaccountId.balance;
+
+//         emit tranferred (fromAccount,_toaccountId,msg.value);
+//     }
+// }
+
+// contract events {
+//     event balance(address account,string message,uint val);
+
+//     function setData(uint _val) public {
+//         emit balance(msg.sender,"has a value",_val);
+//     }
+// }
+
+
+
+//{ loop - break- continue}
+// contract Overflow{
+//     uint public number=1;
+//     function breakstatement() public {
+//         uint i=0;
+//         while (i<=10){
+//             i +=1;
+//             if (i==5){
+//                 break;
+//             }
+//         }
+//             number=i;
+//         }
+
+//      function continuestatement() public{
+//          uint i=0;
+//          while(i<10){
+//              i +=1;
+//              if(i==5){
+//                  continue;
+//              }
+//              i +=1;
+
+//          }
+//          number=i;
+//      }   
+// }
+
+
+
+
+// //{Enum}
+// contract Enum{
+
+// enum Status{
+//     Pending,
+//     Shipped,
+//     Rejected,
+//     Accepted,
+//     Cancel
+// }
+
+// Status public status;
+
+
+// function getStatus() public view returns (Status){
+//     return status;
+// }
+
+// function setStatus(Status _status) public{
+//     status= _status;
+// }
+
+
+// function rej() public {
+//     status=Status.Rejected;
+// }
+
+// function reset() public {
+//     delete status;
+// }
+
+// }
+
+
+// contract status{
+//     enum user{
+//         allowed,
+//         notallowed,
+//         wait
+//             }
+//    user public u1=user.allowed;
+//    user public u2=user.notallowed;
+//    user public u3=user.wait;
+
+//    uint public lottery=1000;
+//    function owner() public {
+//        if (u1==user.allowed){
+//            lottery=0;
+//        }
+//    }
+// function changeOwner() public {
+//     u1=user.notallowed;
+// }
+// }
+
+
+
+// contract Enums{
+//     enum Level{Spider,Snake,Bat,Iron}
+//     Level public level = Level.Spider;
+
+//     function completelevel() public returns(uint){
+//         nextlevel(); 
+//         return uint(level);
+//     }
+
+//     function nextlevel() public {
+//         level =Level(uint(level)+1);
+//     }
+// }
+
+
+// {struct}
+// struct Student{
+//     uint roll;
+//     string name;
+// }
+
+// contract School{
+//     Student public s1;
+//     constructor (uint _roll,string memory _name) {
+//         s1.roll=_roll;
+//         s1.name=_name;
+//     }
+    
+//     function changeS (uint _roll,string memory _name) public{
+//         Student memory newStudent=Student({
+//             roll:_roll,
+//             name:_name
+//           });
+//         s1=newStudent;
+//     }
+// }
+
+
+
+
+//{mapping}
+// contract Mapping{
+//     mapping (uint=>string) public emp_id;
+
+
+//     function setempid() public {      //key:value
+//         emp_id[1]= " Delhi";
+//         emp_id[2]= " Pune";
+//         emp_id[3]= " Mumbai ";
+//         emp_id[4]= " Bangalore ";
+//         emp_id[5]= " London ";
+//     }
+//     function getempid(uint _id ) public view returns (string memory){
+//         return emp_id[_id];
+//     }
+// }
+
+
+                //struct   // File level
+
+// contract advmapping{
+
+//     struct donor_info{     // contract level
+//     string name;
+//     uint age;
+//     string add;
+//     uint donation;
+//     }
+
+//     mapping(address=>donor_info) public acc_info;
+//     function setinfo(string memory _name,uint _age,string memory _add,uint _donation) public{
+//     acc_info[msg.sender]=donor_info(_name,_age,_add,acc_info[msg.sender].donation+_donation);
+//     }
+
+//     function deleteinfo() public{
+//         delete acc_info[msg.sender];
+//     }
+// }
+
+
+// //Storage //	Memory	// Stack
+// Permanent Storage	/ temporary	/temporary
+// It contains keys and value like a hashtable	/ Byte Array  /	Byte Array
+// Uses state variables /	Local variables defined in function calls /	Local values of value types are stored
+// Contract state variable	/ memory variables / stack variables
+// Expensive gas operation  / Does not cost gas and inexpensive operation / Inexpensive gas operation
+// keyword in solidity	/ keyword in solidity	/ Keyword in solidity
+// Like a comp HDD / Like a RAM
+
+// {storage vs memory}
+// contract store{
+//     string[] public Tour = ['Delhi','Pune','Mumbai'];
+
+//     function mem() public view {    //if not done changes in state variable then put- view   
+//         string[] memory s1=Tour;
+//         s1[0]='Mohali';
+//     }
+//     function sto() public {
+//         string[] storage s1=Tour;
+//         s1[0]='Bangalore';
+//     }
+// }
+
+
+
+
+14/03/22
+
+
+//"SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+
+// contract Counter{
+//     uint public count=0;     // another way to view count value to public by adding public
+
+// // constructor ()  {
+// //     count = 0;           //another way to give count value as 0 initial
+// // }
+
+// event Increment (uint value);
+// event Decrement (uint value);
+
+// function getCount() view public returns(uint){    //view count value to public by making function
+//     return count;
+// }
+//     function increment( ) public {
+//         count +=1;
+//         emit Increment(count);
+//     }
+//     function decrement( ) public {
+//         count -=1;
+//         emit Decrement(count);
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //SPDX-License-Identifier: MIT
+// pragma solidity ^0.6.0;
+
+// interface IERC20{
+
+//     function totalSupply() external view returns(uint256);
+//     function balanceOf(address account) external view returns (uint256);
+//     function transfer(address recipient, uint256 amount) external returns(bool);
+
+//     event Transfer(address indexed from, address indexed to, uint256 value);
+// }
+
+// contract CGCToken is IERC20{
+
+//     string public name;
+//     string public symbol;
+//     uint8 public decimals;
+
+//     event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
+//     event Transfer(address indexed from, address indexed to, uint tokens);
+
+//     mapping(address=>uint256) balances;
+//     mapping(address=> mapping(address=>uint256)) allowed;
+
+//     uint256 totalSupply_;
+//     address admin;
+
+//     constructor(string memory _name, string memory _symbol, uint8 _decimal, uint256 _tsupply) public {
+//         totalSupply_ = _tsupply;
+//         balances[msg.sender] = totalSupply_;
+//         name = _name;
+//         symbol = _symbol;
+//         decimals = _decimal;
+//         admin = msg.sender;
+//     }
+
+
+// function totalSupply() public override view returns (uint256){
+//     return totalSupply_;
+//     }
+
+// function balanceOf(address tokenOwner) public override view returns (uint256){
+//     return balances[tokenOwner];
+//     }
+
+// function transfer(address reciever, uint256 numTokens) public override returns (bool){
+//     require(numTokens <= balances[msg.sender]);
+//     balances[msg.sender] -= numTokens;
+//     balances[reciever] += numTokens;
+//     emit Transfer(msg.sender,reciever,numTokens);
+//     return true;
+//     }
+
+// modifier onlyAdmin {
+//     require (msg.sender == admin, "Only admin can run this function");
+//     _;
+//     }
+
+// function mint(uint256 _qty) public onlyAdmin returns(uint256){
+//     totalSupply_ += _qty;
+//     balances[msg.sender] += _qty;
+//     return totalSupply_;
+//     }
+
+// function burn(uint256 _qty) public onlyAdmin returns(uint256){
+//     require(balances[msg.sender] >= _qty);
+//     totalSupply_ -= _qty;
+//     balances[msg.sender] -= _qty;
+//     return totalSupply_;
+//     }
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 15/03/2022
+
+
+// //SPDX-License-Identifier: MIT
+
+// pragma solidity ^0.8.6;
+
+
+// contract Lottery {
+//     address public manager;
+//     address payable[] public players;
+
+//     constructor() {
+//        manager=msg.sender;
+//     }
+
+
+//     function alreadyExist() private view returns(bool) {
+//         for(uint i=0; i<players.length; i++) {
+//             if(players[i]==msg.sender)
+//             return true;
+//         }
+//         return false;
+//     }
+//     function enter() public payable {
+//         require(msg.sender != manager, "Manager Can't Participate");
+//         require(alreadyExist() == false , "Player exists");
+//         require(msg.value >= 1 ether , "Min amount must be paid");
+//         players.push(payable(msg.sender));
+//     }
+
+//     function random() private view returns(uint) {
+//         return uint(keccak256(abi.encodePacked(block.difficulty, block.number, players)));
+//     }
+//     function pickwinner() public {
+//         require(msg.sender == manager, "Only manager can select winner");
+//         uint index = random() % players.length;   //winner index
+//         address contractAddress = address(this);
+//         players[index].transfer(contractAddress.balance);
+//         players = new address payable[](0);       // resetting of lottery
+//     }
+//     function getPlayers() public view returns(address payable[] memory) {
+//         return players;
+//     }
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16/03/2022
+
+
+// //SPDX-License-Identifier: MIT
+
+
+// pragma solidity ^0.8.0;
+
+// contract pay{
+
+//     address payable user=payable(0x617F2E2fD72FD9D5503197092aC168c91465E7f2);    //should mention payable() bcz after ^0.8.0
+//     function payEther() public payable{
+//     }
+//     function getBalance() public view returns(uint){
+//         return address(this).balance;
+//     }
+//     function sendEther() public {
+//         user.transfer(1 ether);
+//     }
+// }
+
+
+
+
+{ Storage, Memory, CallBack }
+// contract dataLocation {
+//     uint[] public arr =[1,3,7,9,22];
+
+//     function Storage() public {
+//         uint [] storage arrs = arr;
+//         arrs[3]=99;
+//     }
+//     function mem() public view {
+//         uint [] memory arrm = arr;
+//         arrm[1]=192;
+//     }
+
+
+//     function Memory1(string memory str1,uint[] memory arr1) public{
+//                                     //execution cost  =  25333 gas
+//     }
+//     function Calldata1(string calldata str1,uint[] calldata arr1) public{
+//                                     //execution cost  =  23305 gas
+//     }
+
+
+
+//     function Memory2(string memory str2,uint[] memory arr2) public{
+//             getInMem(arr2);
+//             //getInCall(arr2);
+//     }
+//     function Calldata2(string calldata str2,uint[] calldata arr2) public{
+//               getInMem(arr2);
+//               getInCall(arr2);                     
+//     }
+//     function getInMem(uint[] memory arr2) public {
+        
+//     }
+//     function getInCall(uint[] calldata arr2) public {
+
+//     }
+    
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+17/03/2022
+
+{Solidity CrowdFunding Project}
+
+// //SPDX-License-Identifier: MIT
+
+// pragma solidity ^0.8.0;
+
+
+// contract Crowdfunding{
+
+//     mapping(address=>uint) public spenders;
+//     address public host;
+//     uint public lowlimitCntrbtn;
+//     uint public timelimit;
+//     uint public goal;    
+//     uint public raisedCntrbtn;
+//     uint public numSpender;
+
+
+//     struct Request{
+//         string description;
+//         address payable recipient;
+//         uint value;
+//         bool completed;
+//         uint numVoters;
+//         mapping(address=>bool) voters;
+//     }
+
+//     mapping(uint=>Request) requests;
+//     uint public numRequests;
+
+
+//     constructor (uint _goal, uint _timelimit) {
+//         host = msg.sender;
+//         goal = _goal;
+//         timelimit = block.timestamp + _timelimit;
+//         lowlimitCntrbtn = 100 wei;
+//     }
+
+
+//     function sendAmnt() public payable {
+//         require(block.timestamp<timelimit, "You have crossed timelimit to spend") ;
+//         require(msg.value > lowlimitCntrbtn , " Please spend more amount than lowlimitCntrbtn ");
+
+//         if(spenders[msg.sender] == 0){
+//             numSpender++;
+//         }
+//         spenders[msg.sender] += msg.value;
+//         raisedCntrbtn += msg.value;
+//     }
+//     function getContractBalance() public view returns(uint) {
+//         return address(this).balance;
+//     }
+//     function payback() public {
+//         require(block.timestamp>timelimit && goal>raisedCntrbtn, "Sorry you are not eligible");
+//         require(spenders[msg.sender]>0);
+//         address payable user = payable (msg.sender);
+//         user.transfer(spenders[msg.sender]);
+//         spenders[msg.sender]=0;
+//     }
+
+
+//     modifier onlyhost(){
+//         require(msg.sender==host, "Only host can call this");
+//         _;
+//     }
+//     function createRequests(string memory _description, address payable _recipient, uint _value) public onlyhost{
+//         Request storage newRequest = requests[numRequests];
+//         numRequests++;
+//         newRequest.description=_description;
+//         newRequest.recipient=_recipient;
+//         newRequest.value=_value;
+//         newRequest.completed=false;
+//         newRequest.numVoters=0;
+//     }
+//     function voterRequest(uint _requestno) public {
+//         require(spenders[msg.sender]>0, "you must be a spender first");
+//         Request storage thisRequest = requests[_requestno];
+//         require(thisRequest.voters[msg.sender] == false, "you have already voted");
+//         thisRequest.voters[msg.sender] = true;
+//         thisRequest.numVoters++;
+//     }
+//     function makePayment(uint _requestno) public onlyhost{
+//         require(raisedCntrbtn>=goal);
+//         Request storage thisRequest = requests[_requestno];
+//         require(thisRequest.completed==false, "The request have been completed");
+//         require(thisRequest.numVoters > numSpender/2, "Majority have not supportecd this");
+//         thisRequest.recipient.transfer(thisRequest.value);
+//         thisRequest.completed = true;
+//     }
+
+
+// }
+
+
+
+
+
+
+{Mapping-Struct}
+
+
+// //SPDX-License-Identifier: MIT
+
+// pragma solidity ^0.8.0;
+
+// contract Courses{
+
+
+//     struct Instructor{
+//         uint age;
+//         string fName;
+//         string lName;
+//     }
+
+//     mapping(address=>Instructor) public instructors;
+ 
+//     function setInstructor(address _address, uint _age, string memory _fname, string memory _lName) public {
+//         instructors[_address]=Instructor(_age,_fname,_lName);      
+//     }
+    
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{30/3/2022}
+
+// Wow-Coin
+
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+interface IERC20{
+
+    function totalSupply() external view returns(uint256);
+    function balanceOf(address account) external view returns (uint256);
+    function transfer(address recipient, uint256 amount) external returns(bool);
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+}
+
+contract WowCoin is IERC20{
+
+    string public name;
+    string public symbol;
+    uint8 public decimals;
+
+    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
+
+    mapping(address=>uint256) balances;
+    mapping(address=> mapping(address=>uint256)) allowed;
+
+    uint256 totalSupply_;
+    address admin;
+
+    constructor() {
+        totalSupply_ = 10000000;
+        balances[msg.sender] = totalSupply_;
+        name = "Wow-Coin";
+        symbol = "wow";
+        decimals = 18;
+        admin = msg.sender;
+    }
+
+
+function totalSupply() public override view returns (uint256){
+    return totalSupply_;
+    }
+
+function balanceOf(address tokenOwner) public override view returns (uint256){
+    return balances[tokenOwner];
+    }
+
+function transfer(address reciever, uint256 numTokens) public override returns (bool){
+    require(numTokens <= balances[msg.sender]);
+    balances[msg.sender] -= numTokens;
+    balances[reciever] += numTokens;
+    emit Transfer(msg.sender,reciever,numTokens);
+    return true;
+    }
+
+modifier onlyAdmin {
+    require (msg.sender == admin, "Only admin can run this function");
+    _;
+    }
+
+function mint(uint256 _qty) public onlyAdmin returns(uint256){
+    totalSupply_ += _qty;
+    balances[msg.sender] += _qty;
+    return totalSupply_;
+    }
+
+function burn(uint256 _qty) public onlyAdmin returns(uint256){
+    require(balances[msg.sender] >= _qty);
+    totalSupply_ -= _qty;
+    balances[msg.sender] -= _qty;
+    return totalSupply_;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{30/3/2022}
+
+// Keccak256
+
+
+
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+
+contract Hashfunc{
+
+    function hash(string memory name1, uint num1, address _add1)external pure returns(bytes32){
+     return keccak256(abi.encodePacked(name1,num1,_add1));
+    }
+
+    function encodefunc(string memory name2, string memory name3, uint num2) external pure returns(bytes memory){
+        return abi.encode(name2,name3,num2);              // "abcd" "efgh" =(no equal bytes)= "abc" "defgh"
+    }
+
+    function encodePackedfunc(string memory name4, string memory name5, uint num2) external pure returns(bytes memory){
+        return abi.encodePacked(name4,name5,num2);              // "abcd" "efgh" =(equal bytes)= "abc" "defgh"
+    }
+
+    function collisionencodePackedfunc(string memory name6, uint num3, string memory name7) external pure returns(bytes32){
+        return keccak256(abi.encodePacked(name6,num3,name7));           // "abcd" 1234 "efgh" =(no equal bytes)= "abc" 1234 "defgh"
+    }
+
+}
